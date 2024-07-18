@@ -1,0 +1,46 @@
+React Hooks are special functions that let you use state and other React features without writing a class. Introduced in React 16.8, hooks simplify the way you manage component logic.
+
+useState: This hook lets you add state to functional components. For example:
+
+javascript
+Copy code
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0); // Declare state variable 'count'
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+In this example, useState initializes count to 0. setCount updates count when the button is clicked.
+
+useEffect: This hook lets you perform side effects in functional components, such as data fetching or modifying the DOM. It replaces lifecycle methods like componentDidMount and componentDidUpdate.
+
+javascript
+Copy code
+import React, { useEffect, useState } from 'react';
+
+function DataFetcher() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []); // Empty array ensures it runs once, like componentDidMount
+
+  return <div>{data ? JSON.stringify(data) : 'Loading...'}</div>;
+}
+Hooks like useState and useEffect make your code cleaner and more readable by allowing you to manage state and side effects directly in functional components. They simplify complex logic and enhance code reusability.
+
+
+
+
+
+
+
+
